@@ -34,6 +34,7 @@ apply() {
     if [[ $DRY_RUN -eq 1 ]]; then
         printf '[\033[1;33m DRY  \033[0m] %s\n' "$*"
     else
+        # shellcheck disable=SC2294
         eval "$@"
     fi
 }
