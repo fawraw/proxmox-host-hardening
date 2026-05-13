@@ -1,5 +1,6 @@
 # proxmox-host-hardening
 
+[![Lint](https://github.com/fawraw/proxmox-host-hardening/actions/workflows/lint.yml/badge.svg)](https://github.com/fawraw/proxmox-host-hardening/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/github/license/fawraw/proxmox-host-hardening)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/fawraw/proxmox-host-hardening)](https://github.com/fawraw/proxmox-host-hardening/releases)
 ![Proxmox VE](https://img.shields.io/badge/Proxmox%20VE-8-orange)
