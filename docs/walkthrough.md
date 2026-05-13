@@ -71,7 +71,7 @@ The repo file uses the running Debian codename (`bookworm` for PVE 8.0-8.3, `tri
 
 ## 9. Memory tuning
 
-`vm.swappiness = 10`: with 100+ GB of RAM, the default `swappiness=60` swaps out idle pages aggressively. On a hypervisor running large Windows VMs, this causes I/O latency spikes for no benefit -- pages have to be paged back in as soon as the VM touches them. `10` keeps the kernel honest without disabling swap entirely.
+`vm.swappiness = 10`: with 100+ GB of RAM, the default `swappiness=60` swaps out idle pages aggressively. On a hypervisor running large Windows VMs, this causes I/O latency spikes for no benefit: pages have to be paged back in as soon as the VM touches them. `10` keeps the kernel honest without disabling swap entirely.
 
 KSM (`Kernel Same-page Merging`): identical memory pages across VMs are merged into a single physical page. Particularly effective for Windows VMs sharing the same kernel, DLLs, .NET runtime. Can recover several GB on a host with 3+ Windows Server VMs.
 
@@ -84,7 +84,7 @@ Tuning parameters:
 
 ## 10. rpcbind via tcpwrappers
 
-`rpcbind` must stay running -- it's required for NFS client mounts, which most production Proxmox clusters use for backup storage or ISO repositories. CIS would prefer it disabled; we restrict it instead.
+`rpcbind` must stay running: it's required for NFS client mounts, which most production Proxmox clusters use for backup storage or ISO repositories. CIS would prefer it disabled; we restrict it instead.
 
 Default rules in this playbook accept RFC1918 ranges. **Tighten to your actual subnet** in production:
 

@@ -49,7 +49,7 @@ The script is **idempotent**: running it twice is safe and produces no diff on t
 - Banner / motd
 
 ### SSH server
-- `PermitRootLogin prohibit-password` (root keys only -- required for PVE cluster operations)
+- `PermitRootLogin prohibit-password` (root keys only: required for PVE cluster operations)
 - Password authentication disabled
 - Strong cipher / MAC / KEX algorithms only
 - 5-minute idle timeout
@@ -74,7 +74,7 @@ The script is **idempotent**: running it twice is safe and produces no diff on t
 ### Kernel module blacklist
 - Filesystems unused on a server: `cramfs`, `freevxfs`, `jffs2`, `hfs`, `hfsplus`, `squashfs`, `udf`
 - Network protocols unused on a server: `dccp`, `sctp`, `rds`, `tipc`
-- USB storage (`usb-storage`, `uas`) -- comment out if you need USB on the node
+- USB storage (`usb-storage`, `uas`): comment out if you need USB on the node
 
 ### Password quality (PAM)
 - `pwquality.conf` with `minlen=12`, at least one of each class
@@ -102,7 +102,7 @@ The script is **idempotent**: running it twice is safe and produces no diff on t
 Two PVE-specific notes that trip people up the first time:
 
 1. **Root SSH must remain enabled** between cluster nodes. The script sets `PermitRootLogin prohibit-password` (key-only), not `no`. `AllowUsers` always includes `root`.
-2. **`rpcbind` stays running** -- required for NFS client mounts (typical NetApp backup / ISO repository).
+2. **`rpcbind` stays running**: required for NFS client mounts (typical NetApp backup / ISO repository).
 
 Both are documented in [`docs/accepted-findings.md`](docs/accepted-findings.md).
 

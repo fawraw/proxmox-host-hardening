@@ -13,9 +13,9 @@ Mapping of `harden.sh` sections to CIS Debian Linux benchmark controls. Use this
 | `blacklist_modules`    | 1.1.1.x (Disable unused filesystems), 3.4.x (Disable unused protocols) | USB-storage in separate file |
 | `pam_quality`          | 5.4.x (PAM configuration)           | `minlen=12`, full class diversity |
 | `misc_cis`             | 5.4.5 (default umask), 4.2.x (logging) | `UMASK 027`, persistent journald |
-| `pve_specific`         | -- (Proxmox-specific)               | Repo selection + disable unused services |
-| `memory_tuning`        | -- (performance, not CIS)           | swappiness + KSM |
-| `rpcbind_restrict`     | 2.2.4 (Disable rpcbind) -- ACCEPTED FINDING | required by NFS client |
+| `pve_specific`         | (Proxmox-specific)                  | Repo selection + disable unused services |
+| `memory_tuning`        | (performance, not CIS)              | swappiness + KSM |
+| `rpcbind_restrict`     | 2.2.4 (Disable rpcbind): ACCEPTED FINDING | required by NFS client |
 
 ## Coverage summary
 
