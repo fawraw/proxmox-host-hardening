@@ -1,5 +1,10 @@
 # proxmox-host-hardening
 
+[![License: MIT](https://img.shields.io/github/license/fawraw/proxmox-host-hardening)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/fawraw/proxmox-host-hardening)](https://github.com/fawraw/proxmox-host-hardening/releases)
+![Proxmox VE](https://img.shields.io/badge/Proxmox%20VE-8-orange)
+![Debian](https://img.shields.io/badge/Debian-12%20%7C%2013-red)
+
 CIS-aligned hardening playbook for Proxmox VE 8 hosts (Debian 12 / 13 base). Distilled from a production cluster running mixed workloads (Linux + Windows VMs, dozens of LXC containers, NetApp iSCSI shared storage).
 
 The goal is a host that:
