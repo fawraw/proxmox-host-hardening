@@ -1,0 +1,47 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run ShellCheck on harden.sh
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: '.'
+          severity: warning
+
+  syntax:
+    name: Bash syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: bash -n
+        run: bash -n harden.sh
+
+      - name: Confirm script is executable
+        run: |
+          test -x harden.sh || { echo "harden.sh is not executable"; exit 1; }
+
+  dry-run:
+    name: Dry-run smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run harden.sh --dry-run
+        run: |
+          # The script requires root; fake it with fakeroot, or just check the help / dry-run path
+          sudo ./harden.sh --dry-run | tee /tmp/dry-run.log
+          grep -q "Backups will be written to" /tmp/dry-run.log
+          grep -q "Done. Recommended manual follow-up" /tmp/dry-run.log
